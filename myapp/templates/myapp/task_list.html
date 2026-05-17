@@ -24,15 +24,20 @@
                     <h5 class="card-title">{{ task.title }}</h5>
                     <p class="card-text">{{ task.description }}</p>
 
-                    {% if task.completed %}
-                        <span class="badge bg-success">Completed</span>
-                    {% else %}
-                        <span class="badge bg-warning text-dark">Pending</span>
-                    {% endif %}
+                    
                 </div>
             </div>
         </div>
-        {% endfor %}
+        {% if task.completed %}
+    <span class="badge bg-success">Completed</span>
+{% else %}
+    <span class="badge bg-warning text-dark">Pending</span>
+{% endif %}
+
+<a href="{% url 'add_task' %}" class="btn btn-primary btn-sm mt-2">Add</a>
+<a href="{% url 'edit_task' task.id %}" class="btn btn-warning btn-sm mt-2">Edit</a>
+<a href="{% url 'delete_task' task.id %}" class="btn btn-danger btn-sm mt-2">Delete</a>
+{% endfor %}
     </div>
 </div>
 
